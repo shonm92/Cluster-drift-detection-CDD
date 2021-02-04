@@ -79,8 +79,7 @@ class CDD:
                     gmm = GaussianMixture(n_components=c, random_state=random).fit(data)
                     preds = gmm.predict(data)
                     score = silhouette_score(data, preds, metric='euclidean')
-                    scores[k - 2] = score
-                    print(k)
+                    scores[c - 2] = score
                 return np.argmax(scores) + 2
             if np.isnan(self.k):
                 k = choose_k(x_train, self.max_k, self.random)
